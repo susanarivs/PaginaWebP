@@ -1,6 +1,6 @@
 .presentacion {
     background: rgb(2, 1, 2);
-    background: linear-gradient(180deg, rgb(63, 26, 57) 11%, rgb(104, 46, 87) 60%, rgb(19, 9, 20) 100%);
+    background: linear-gradient(180deg, rgb(10, 6, 10) 11%, rgb(104, 46, 87) 60%, rgb(19, 9, 20) 100%);
     display: flex;
     flex-direction: row;
     justify-content: center;
