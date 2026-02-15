@@ -33,23 +33,33 @@
 <body>
     
     <header id="header">
-        <ul class="nav nav-pills nav-fill gap-2 p-1 small bg-primary rounded-5 shadow-sm" id="pillNav2" role="tablist" style="--bs-nav-link-color: var(--bs-white); --bs-nav-pills-link-active-color: var(--bs-primary); --bs-nav-pills-link-active-bg: var(--bs-white);">
-            <li class="nav-item" role="presentation">
-                <button class="nav-link rounded-5" id="home-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="true"><a href="#idSobreMi">Sobre mi</a></li></button>
-              </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link rounded-5" id="home-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="true"><a href="#IdSkills">Skills</a></li></button>
-              </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link rounded-5" id="home-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="true"><a href="#IdFormacion">Formación</a></button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link rounded-5" id="profile-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="false"><a href="#IdProyectos">Proyectos</a> </button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link rounded-5" id="contact-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="false"><a href="#IdFormulario">Contacto</a></button>
-            </li>
-        </ul>
+        <nav class="navbar-custom">
+            <div class="nav-brand">
+                <span class="brand-text">Susana Rivera</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#idSobreMi" class="nav-link">Sobre mí</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#IdSkills" class="nav-link">Skills</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#IdFormacion" class="nav-link">Formación</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#IdProyectos" class="nav-link">Proyectos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#IdFormulario" class="nav-link nav-link-cta">Contacto</a>
+                </li>
+            </ul>
+            <button class="nav-toggle" id="navToggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </nav>
     </header>
      <div class="head__lineas">
         <p class="head__linea"></p>
@@ -59,21 +69,19 @@
         
         <section id="idSobreMi" class="presentacion container my-5" data-aos="fade-up">
             
-            <article class="row p-4 pb-0 pt-lg-5 justify-content-center align-items-center rounded-3 border shadow-lg">
+            <article class="row p-4 pb-0 pt-lg-5 justify-content-center align-items-center rounded-4 border-0 shadow-lg" style="background: rgba(255,255,255,0.05); backdrop-filter: blur(10px);">
                
                 <div class="col-lg-12 d-flex flex-column align-items-center justify-content-center px-3 px-lg-5 pt-lg-3" data-aos="fade-up">
                     <!-- <img src="imagenes/susan.jpg" alt="susana" class="presentacion__foto"> -->
                     <div id="img-perfil" data-aos="zoom-in-up">
                         <img  src="imagenes/susan.jpg" class="img-thumbnail rounded-circle" alt="Foto de perfil" data-aos="zoom-in-up">
                     </div>
-                    <div>
-                        
-                        <div class="contenedor" data-aos="zoom-in-up">
-                            <h1>Susana Rivera Vergara.<span>&#160;</span></h1>
-                        </div>
-                        
+                    <div class="presentacion__header">
+                        <h1 class="presentacion__titulo" data-aos="fade-up">Susana Rivera Vergara</h1>
+                        <p class="presentacion__subtitulo" data-aos="fade-up" data-aos-delay="100">Ingeniera en Sistemas Computacionales | AI & Data Analyst</p>
+                    </div>
                     
-                    <article class="presentacion__nombre" data-aos="fade-right">
+                    <article class="presentacion__nombre" data-aos="fade-up" data-aos-delay="200">
                         <p class="presentacion__quienSoy contenido">
                             Soy <strong>Ingeniera en Sistemas Computacionales</strong> egresada de la ESCOM-IPN[cite: 2, 11]. 
                             Me especializo en el análisis de datos y el desarrollo de soluciones con <strong>Inteligencia Artificial</strong>[cite: 8]. 
@@ -371,3 +379,16 @@
 </body>
 
 </html>
+
+<style>
+body {
+    font-family: 'Orbitron', sans-serif;
+    background: #0d0d12;
+    color: #ffffff;
+    padding-top: 80px; /* Espacio para el header fijo */
+}
+
+section {
+    scroll-margin-top: 80px; /* Para que los enlaces de navegación no queden debajo del header */
+}
+</style>
