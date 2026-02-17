@@ -1,22 +1,30 @@
 footer {
-     background: rgb(11, 20, 22);
-    background: linear-gradient(180deg, rgb(40, 20, 43) 11%, rgb(100, 66, 110) 60%, rgb(39, 22, 39) 100%);
- 
-    color: #fbfbfb;
+    background: linear-gradient(180deg, var(--negro) 0%, var(--gris-oscuro) 100%);
+    color: var(--beige);
     text-align: center;
     font-size: 0.875rem;
-    padding: 0.5rem 0;
-    line-height: 1.5;
-    box-shadow: 0 -6px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 2rem 0;
+    line-height: 1.8;
+    box-shadow: 0 -6px 8px 0 rgba(232, 180, 184, 0.1);
     display: flex;
-    justify-content: end;
-    position: relative;
-    /* cursor: pointer; */
-    
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
 
 .footer__contenido {
-    margin: 1rem;
+    margin: 0.5rem;
+    color: var(--gris-claro);
+}
+
+.footer__linea1,
+.footer__linea2 {
+    width: 80%;
+    max-width: 400px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--rosa-suave), transparent);
+    margin: 10px 0;
 }
 
 .logo{

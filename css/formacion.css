@@ -1,44 +1,150 @@
 .formacion {
-    background: rgb(23, 21, 24);
-    background: linear-gradient(180deg, rgb(9, 6, 10) 6%, rgb(95, 74, 98) 81%, rgb(33, 17, 30) 100%);
+    background: linear-gradient(180deg, #2C2C2C 0%, #5A5A5A 50%, #2C2C2C 100%);
+    padding: 80px 20px;
+    min-height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 
-.formacion__titulo3 {
-    padding-top: 1rem;
-    color: #e3d8ec;
+.formacion_titulo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300;
+    text-align: center;
+    color: #E8B4B8;
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
 }
-#IdFormacion{
-    display: flex;
-  align-items: center;
-  
 
+#carouselExampleCaptions {
+    max-width: 900px;
+    margin: 0 auto;
+    background: rgba(245, 245, 220, 0.03);
+    border-radius: 20px;
+    padding: 40px 20px;
+    border: 1px solid rgba(232, 180, 184, 0.15);
 }
 
+.carousel-inner {
+    border-radius: 15px;
+}
 
-.formacion img {
-    width: 100px;
-    justify-self: center;
-    border: #ebf3f3 ridge;
-    padding: 1rem;
-   /*  cursor: pointer;*/
-} 
+.carousel-item {
+    padding: 60px 40px;
+    text-align: center;
+}
 
+.carousel-item h2 {
+    color: #E8B4B8;
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    font-weight: 400;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
 
+.carousel-item p {
+    color: #BEBDB8;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    margin-bottom: 40px;
+}
 
-@media screen and (min-width: 60px) {
+/* Imágenes uniformes */
+.carousel-item img {
+    max-width: 300px;
+    max-height: 300px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    margin: 0 auto;
+    display: block;
+    border-radius: 10px;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
 
-    .formacion img {
-        width: 80%;
-        align-items: center;
+.carousel-item img:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(232, 180, 184, 0.3);
+}
+
+/* Controles del carrusel */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 60px;
+    height: 60px;
+    background: rgba(232, 180, 184, 0.2);
+    border-radius: 50%;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background: rgba(232, 180, 184, 0.4);
+    opacity: 1;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 30px;
+    height: 30px;
+    filter: invert(1);
+}
+
+/* Indicadores */
+.carousel-indicators {
+    margin-bottom: 0;
+}
+
+.carousel-indicators [data-bs-target] {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #BEBDB8;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.carousel-indicators .active {
+    background-color: #E8B4B8;
+    opacity: 1;
+    transform: scale(1.3);
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .formacion {
+        padding: 60px 15px;
+    }
+    
+    #carouselExampleCaptions {
+        padding: 30px 15px;
+    }
+    
+    .carousel-item {
+        padding: 40px 20px;
+    }
+    
+    .carousel-item img {
+        max-width: 220px;
+        max-height: 220px;
+        padding: 15px;
+    }
+    
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 45px;
+        height: 45px;
     }
 }
-#carouselExampleCaptions{
-    width: 400px
-    
-}
-.formacion{
-    width: 100%;
-    font-weight: 100px
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .carousel-item img {
+        max-width: 280px;
+        max-height: 280px;
+    }
 }

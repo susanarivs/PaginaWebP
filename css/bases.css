@@ -1,22 +1,142 @@
+:root {
+    --rosa-suave: #E8B4B8;
+    --gris-oscuro: #5A5A5A;
+    --beige: #F5F5DC;
+    --gris-claro: #BEBDB8;
+    --negro: #2C2C2C;
+    --blanco: #FFFFFF;
+}
+
+/* Animaciones Keyframes */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes slideInFromBottom {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 html {
     scroll-behavior: smooth;
-    background-color: #0d0d12;
+    background-color: var(--negro);
 }
 
 body {
     font-family: 'Orbitron', sans-serif;
-    background: linear-gradient(180deg, #0d0d12 0%, #1a1a2e 50%, #0d0d12 100%);
-    color: #ffffff;
+    background: linear-gradient(180deg, var(--negro) 0%, var(--gris-oscuro) 50%, var(--negro) 100%);
+    color: var(--beige);
     margin: 0;
     padding: 0;
-    padding-top: 70px; /* Espacio para el header fijo */
+    padding-top: 70px;
 }
 
 section {
-    scroll-margin-top: 80px; /* Para que los enlaces no queden debajo del header */
+    scroll-margin-top: 80px;
+    animation: fadeInUp 0.8s ease-out;
 }
 
 strong {
     font-weight: bolder;
-    color: #3DB2FF;
+    color: var(--rosa-suave);
+    position: relative;
+    display: inline-block;
+}
+
+strong::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--rosa-suave), transparent);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+strong:hover::after {
+    transform: scaleX(1);
 }
