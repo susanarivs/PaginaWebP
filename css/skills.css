@@ -19,6 +19,8 @@
     margin: 30px auto 60px;
     padding: 0 15px;
     width: 100%;
+    position: relative;
+    z-index: 1;
 }
 
 @media screen and (min-width: 600px) {
@@ -30,7 +32,7 @@
     }
     
     .skills {
-        padding: 80px 20px;
+        padding: 80px 20px 120px;
     }
 }
 
@@ -148,8 +150,10 @@
 .skills section {
     clear: both;
     width: 100%;
-    margin-top: 80px;
-    padding-top: 60px;
+    margin-top: 120px;
+    padding-top: 80px;
+    position: relative;
+    z-index: 2;
 }
 
 .skills__titulo {
@@ -164,8 +168,8 @@
 
 @media screen and (min-width: 600px) {
     .skills section {
-        margin-top: 100px;
-        padding-top: 80px;
+        margin-top: 150px;
+        padding-top: 100px;
     }
     
     .skills__titulo {
