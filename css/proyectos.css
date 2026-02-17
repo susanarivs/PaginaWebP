@@ -1,7 +1,13 @@
 .Proyectos {
     background: linear-gradient(180deg, var(--gris-oscuro) 0%, var(--negro) 100%);
-    padding: 80px 20px;
+    padding: 60px 15px;
     position: relative;
+}
+
+@media screen and (min-width: 600px) {
+    .Proyectos {
+        padding: 80px 20px;
+    }
 }
 
 .Proyectos::before {
@@ -28,7 +34,7 @@
 
 .proyectos {
     background: rgba(245, 245, 220, 0.05);
-    border-radius: 20px;
+    border-radius: 15px;
     overflow: hidden;
     transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border: 1px solid rgba(232, 180, 184, 0.2);
@@ -37,6 +43,13 @@
     position: relative;
     animation: fadeInUp 0.8s ease-out backwards;
     cursor: pointer;
+    max-width: 100%;
+}
+
+@media screen and (min-width: 600px) {
+    .proyectos {
+        border-radius: 20px;
+    }
 }
 
 .proyectos:nth-child(1) { animation-delay: 0.2s; }
@@ -80,14 +93,22 @@
 }
 
 .titulo {
-    padding: 25px;
-    font-size: 1.5rem;
+    padding: 20px;
+    font-size: 1.3rem;
     font-weight: 600;
     color: var(--rosa-suave);
     background: rgba(232, 180, 184, 0.1);
     position: relative;
     z-index: 2;
     transition: all 0.3s ease;
+    word-wrap: break-word;
+}
+
+@media screen and (min-width: 600px) {
+    .titulo {
+        padding: 25px;
+        font-size: 1.5rem;
+    }
 }
 
 .proyectos:hover .titulo {
@@ -96,11 +117,19 @@
 }
 
 .cuerpo {
-    padding: 25px;
+    padding: 20px;
     flex-grow: 1;
     color: var(--beige);
     position: relative;
     z-index: 2;
+    font-size: 0.95rem;
+}
+
+@media screen and (min-width: 600px) {
+    .cuerpo {
+        padding: 25px;
+        font-size: 1rem;
+    }
 }
 
 .cuerpo img {
@@ -174,8 +203,6 @@
     .contenedor {
         grid-template-columns: 1fr;
     }
-}
-  content: ""
 }
 
 

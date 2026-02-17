@@ -1,14 +1,22 @@
 .presentacion {
     background: linear-gradient(135deg, var(--gris-oscuro) 0%, var(--negro) 50%, var(--gris-oscuro) 100%);
-    border-radius: 0 0 50px 50px;
-    margin-bottom: 50px;
+    border-radius: 0 0 30px 30px;
+    margin-bottom: 30px;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     color: var(--beige);
-    padding-top: .5%;
+    padding: 20px 15px;
     min-height: 100vh;
+}
+
+@media screen and (min-width: 600px) {
+    .presentacion {
+        border-radius: 0 0 50px 50px;
+        margin-bottom: 50px;
+        padding-top: 0.5%;
+    }
 }
 
 .container.my-5 {
@@ -125,12 +133,12 @@
 
 .titulo2 {
     font-family: 'Orbitron', sans-serif;
-    font-size: 2.5rem;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
     font-weight: 200;
     align-self: center;
     text-align: center;
     color: var(--rosa-suave);
-    padding: 1rem;
+    padding: 1rem 0.5rem;
     position: relative;
     display: inline-block;
     animation: fadeInUp 0.8s ease-out;
@@ -140,11 +148,20 @@
 .titulo2::after {
     content: '';
     position: absolute;
-    width: 60px;
+    width: 40px;
     height: 3px;
     background: linear-gradient(90deg, transparent, var(--rosa-suave));
     top: 50%;
     animation: slideInFromBottom 0.8s ease-out 0.3s both;
+    display: none;
+}
+
+@media screen and (min-width: 600px) {
+    .titulo2::before,
+    .titulo2::after {
+        display: block;
+        width: 60px;
+    }
 }
 
 .titulo2::before {

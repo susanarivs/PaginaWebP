@@ -1,6 +1,6 @@
 .skills {
     background: linear-gradient(180deg, var(--negro) 0%, var(--gris-oscuro) 100%);
-    padding: 80px 20px;
+    padding: 60px 15px;
 }
 
 .bg-image {
@@ -13,25 +13,44 @@
 }
 .skills_contenedor-global {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
+    grid-template-columns: 1fr;
+    gap: 20px;
     max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 20px;
+    margin: 30px auto;
+    padding: 0 15px;
+}
+
+@media screen and (min-width: 600px) {
+    .skills_contenedor-global {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        padding: 0 20px;
+    }
+    
+    .skills {
+        padding: 80px 20px;
+    }
 }
 
 .skill {
     background: rgba(245, 245, 220, 0.05);
     border-radius: 15px;
-    padding: 25px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 12px;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border: 1px solid rgba(232, 180, 184, 0.2);
     position: relative;
     overflow: hidden;
     animation: fadeInUp 0.6s ease-out backwards;
+}
+
+@media screen and (min-width: 600px) {
+    .skill {
+        padding: 25px;
+        gap: 15px;
+    }
 }
 
 .skill::before {
