@@ -6,16 +6,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV Susana Rivera Vergara</title>
-    <link rel="stylesheet" href="css/cv.css">
-     
+
+    <!-- Fuentes (mismas que en index.html) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Handjet:wght@300&family=Kanit:wght@300&family=Orbitron&display=swap"
+        rel="stylesheet">
+
+    <!-- Estilos compartidos (orden importante) -->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/head.css">       <!-- same order as index.html -->
+    <link rel="stylesheet" href="css/bases.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/presentacion.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <!-- Estilo específico del CV (cargado al final para override) -->
+    <link rel="stylesheet" href="css/cv.css?v=1.2">
+
 </head>
 <body>
      
     <div class="contenedor" data-aos="zoom-in-up">
-        <h1>Susana Rivera Vergara.<span>&#160;</span></h1>
+        <h1>Susana Rivera Vergara.</h1>
     </div>
-    
-    <embed src="docs/Susana Rivera Vergara_español.pdf#view=FitV" type="application/pdf">
+
+    <div class="embed-wrapper">
+        <!-- botón para abrir PDF en nueva pestaña (mejor para ver la toolbar nativa) -->
+        <button class="embed-open" onclick="openPdf()">Abrir CV (nueva pestaña)</button>
+        <embed id="cv-embed" src="docs/Susana Rivera Vergara_español.pdf#view=FitV" type="application/pdf">
+    </div>
+
+    <script>
+      // filepath: cv.html (inline)
+      function openPdf(){
+        const src = document.getElementById('cv-embed').getAttribute('src');
+        window.open(src.split('#')[0], '_blank', 'noopener');
+      }
+    </script>
 </body>
 
 </html>
