@@ -29,21 +29,67 @@
      
     <div class="contenedor" data-aos="zoom-in-up">
         <h1>Susana Rivera Vergara.</h1>
+        <!-- switch: elegir idioma del CV -->
+        <div class="cv-switch" role="tablist" aria-label="Seleccionar CV">
+            <button type="button" class="cv-btn active" data-src="docs/Susana_Rivera_Vergara_Espanish.pdf#view=FitV" aria-pressed="true">CV (Español)</button>
+            <button type="button" class="cv-btn" data-src="docs/Susana_Rivera_Vergara_English.pdf#view=FitV" aria-pressed="false">CV (English)</button>
+        </div>
     </div>
-
-    <div class="embed-wrapper">
-        <!-- botón para abrir PDF en nueva pestaña (mejor para ver la toolbar nativa) -->
-        <button class="embed-open" onclick="openPdf()">Abrir CV (nueva pestaña)</button>
-        <embed id="cv-embed" src="docs/Susana Rivera Vergara_español.pdf#view=FitV" type="application/pdf">
-    </div>
-
+ 
+     <div class="embed-wrapper">
+         <!-- botón para abrir PDF en nueva pestaña (mejor para ver la toolbar nativa) -->
+        <button class="embed-open" id="embedOpen">Abrir CV (nueva pestaña)</button>
+        <!-- visor: por defecto apuntamos al PDF en español -->
+        <embed id="cv-embed" src="docs/Susana_Rivera_Vergara_Espanish.pdf#view=FitV" type="application/pdf" aria-label="Visor del CV">
+     </div>
+ 
     <script>
       // filepath: cv.html (inline)
-      function openPdf(){
-        const src = document.getElementById('cv-embed').getAttribute('src');
-        window.open(src.split('#')[0], '_blank', 'noopener');
-      }
-    </script>
-</body>
+      (function(){
+        const embed = document.getElementById('cv-embed');
+        const buttons = document.querySelectorAll('.cv-btn');
+        const openBtn = document.getElementById('embedOpen');
 
-</html>
+        function setActiveButton(targetBtn){
+          buttons.forEach(b => {
+            const active = b === targetBtn;
+            b.classList.toggle('active', active);
+            b.setAttribute('aria-pressed', active ? 'true' : 'false');
+          });
+        }
+
+        // Cambia el src del embed al hacer click en el selector de idioma
+        buttons.forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            const src = btn.getAttribute('data-src');
+            if (!src) return;
+            embed.setAttribute('src', src);
+            setActiveButton(btn);
+          });
+        });
+
+        // Abre en nueva pestaña el PDF actualmente cargado en el embed
+        window.openPdf = function openPdf(){
+          const src = embed.getAttribute('src') || '';
+          const url = src.split('#')[0] || src;
+          if (!url) return;
+          window.open(url, '_blank', 'noopener');
+        };
+
+        // conectar botón visible
+        openBtn.addEventListener('click', () => window.openPdf());
+
+        // accesibilidad: permitir cambio con teclado (Enter/Space)
+        buttons.forEach(btn => {
+          btn.addEventListener('keydown', (ev) => {
+            if (ev.key === 'Enter' || ev.key === ' ') {
+              ev.preventDefault();
+              btn.click();
+            }
+          });
+        });
+      })();
+    </script>
+ </body>
+ 
+ </html>
