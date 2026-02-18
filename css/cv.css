@@ -1,41 +1,237 @@
-html { 
-     background: rgba(246, 243, 247, 0.692);
-    background: linear-gradient(180deg, rgb(58, 30, 55) 11%, rgb(127, 93, 125) 70%, rgb(39, 5, 38) 100%);
- 
-    text-align: center;
-} 
+/* --- REPLACE: cv.css limpio — usar únicamente variables de css/bases.css --- */
 
-embed {
-    background: rgba(19, 13, 25, 0.81);
-    background: linear-gradient(180deg, rgba(51, 24, 73, 0.81) 60%, rgb(92, 6, 162) 60%, rgba(145,184,193,1) 100%);
-    width: 100vw;
-    height: 100vh;
-    margin: 0 auto;
-    /* cursor: pointer; */
+* { box-sizing: border-box; }
+
+/* FORZAR USO DE LA PALETA (reemplaza hard-coded purple) */
+:root {
+  --cv-accent: var(--rosa-suave);
 }
 
-
-
-h1 { 
-	position: relative; 
-	float: left;
-	background: rgb(59, 33, 59);
-	color: #fff;
-	font-size: 2.4em;
-    padding: .5rem;
+/* usar las variables definidas en css/bases.css */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding-top: 80px;
+  /* sustituir rgba(44,20,34,0.6) por la paleta */
+  background: linear-gradient(180deg, var(--gris-oscuro) 6%, var(--negro) 50%, var(--gris-oscuro) 100%);
+  color: var(--beige);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: inherit;
 }
 
-h1 span {
-    position:absolute;
-    right:0;
-    width:0;
-    background: rgb(65, 36, 63);
-    border-left: .5px solid #000;
-    font-size: 1.3em;
-    animation: escribir 5s steps(30) infinite alternate;
+/* contenedor y título — sólo variables de la paleta */
+.contenedor {
+  width: min(1100px, 94%);
+  max-width: 1100px;
+  margin: 1.25rem auto 0;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
 }
 
-@keyframes escribir {
-    from { width: 100% }
-    to { width:0 }
+/* TÍTULO: fondo suave tipo "glass" para integrar la paleta */
+.contenedor h1 {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  border-radius: 18px;
+  background: linear-gradient(90deg, rgba(0,0,0,0.55), rgba(0,0,0,0.10));
+  backdrop-filter: blur(6px) saturate(1.05);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.55), 0 6px 18px rgba(0,0,0,0.25) inset;
+  color: var(--beige);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 700;
+  position: relative;
+  overflow: hidden;
+  transform-origin: center;
+  animation: headerEntrance 700ms cubic-bezier(.2,.9,.2,1) both;
+  white-space: normal;
 }
+
+/* Título (texto) — ocupa sólo lo que necesita */
+.contenedor h1 .title {
+  display: block;
+  flex: 0 0 auto;            /* no crece, mantiene su ancho */
+  padding-right: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;   /* evita que el texto empuje el pill en pantallas pequeñas */
+  line-height: 1;
+}
+
+/* ACCENTO: ahora rellena el espacio restante a la derecha */
+.contenedor h1 .accent {
+  margin-left: 0.5rem;
+  flex: 1 1 0;               /* rellena el espacio disponible */
+  min-width: 120px;
+  max-width: none;           /* permitir que ocupe todo el espacio restante */
+  height: 56px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, var(--rosa-suave) 0%, rgba(0,0,0,0.28) 72%);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.45), inset 0 6px 18px rgba(232,180,184,0.06);
+  border: 1px solid rgba(232,180,184,0.07);
+  position: relative;
+  transition: transform .28s ease, box-shadow .28s ease, background-position .9s ease;
+  cursor: default;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  padding: 0 18px;
+  overflow: hidden;
+  flex-shrink: 1;
+}
+
+/* brillo sutil convertido a background (evita pseudo-elementos con translate que crean "fantasmas") */
+.contenedor h1 .accent::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  /* shimmer usando background-position (no se superpone con sombras externas) */
+  background: linear-gradient(90deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 40%, rgba(255,255,255,0.06) 100%);
+  background-size: 200% 100%;
+  background-position: left center;
+  pointer-events: none;
+  mix-blend-mode: normal;
+  opacity: .85;
+  transition: background-position .9s cubic-bezier(.2,.9,.2,1);
+  z-index: 4;
+}
+
+/* al pasar el ratón, desplaza el brillo en vez de mover el elemento (evita "doble") */
+.contenedor h1:hover .accent::before {
+  background-position: right center;
+}
+
+/* eliminar cualquier pseudo-elemento interno que pudiera haber quedado por overrides */
+.contenedor h1 .accent::after {
+  content: none !important;
+}
+
+/* hover: levantar y acentuar brillo */
+.contenedor h1:hover .accent {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 28px 56px rgba(0,0,0,0.55), 0 10px 26px rgba(232,180,184,0.10) inset;
+}
+.contenedor h1:hover .accent::before {
+  transform: translateX(6%);
+  transition: transform .9s cubic-bezier(.2,.9,.2,1);
+}
+
+/* wrapper del PDF — color del "chrome" y borde usando la paleta */
+.embed-wrapper {
+  width: min(1100px, 94%);
+  margin: 1.8rem auto 3.2rem;
+  padding: 14px;
+  border-radius: 14px;
+  /* quitar tonos morados directos y usar variables */
+  background: linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.85));
+  box-shadow: 0 40px 90px rgba(0,0,0,0.6), 0 0 0 8px rgba(0,0,0,0.04) inset;
+  border: 1px solid rgba(232,180,184,0.06); /* sigue el tono rosa suave de la paleta */
+  position: relative;
+  overflow: hidden;
+  z-index: 20;
+}
+
+/* top bar visual */
+.embed-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  right: 12px;
+  height: 48px;
+  background: linear-gradient(90deg, rgba(0,0,0,0.22), rgba(0,0,0,0.14));
+  border-radius: 8px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.35) inset;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* overlay sutil que no bloquea controles */
+.embed-wrapper .pdf-overlay {
+  position: absolute;
+  z-index: 6;
+  top: 8px;
+  right: 12px;
+  height: 48px;
+  width: calc(100% - 24px);
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(0,0,0,0.06), rgba(0,0,0,0.08));
+  border-radius: 8px;
+  mix-blend-mode: multiply;
+  opacity: 0.95;
+}
+
+/* embed (el visor PDF) — el contenido del PDF sigue siendo blanco por diseño del PDF */
+.embed-wrapper embed {
+  display: block;
+  width: 100%;
+  height: min(72vh, 880px);
+  border-radius: 10px;
+  background: linear-gradient(180deg, var(--negro), var(--gris-oscuro));
+  position: relative;
+  z-index: 4;
+  border: 1px solid rgba(0,0,0,0.25);
+}
+
+/* botón para abrir PDF en nueva pestaña */
+.embed-open {
+  position: absolute;
+  right: 18px;
+  top: 12px;
+  z-index: 8;
+  background: linear-gradient(135deg, var(--rosa-suave), rgba(0,0,0,0.12));
+  color: var(--negro);
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.18);
+}
+
+/* responsive */
+@media screen and (max-width: 768px) {
+  .embed-wrapper { width: 96%; padding: 10px; }
+  .embed-wrapper embed { height: calc(100vh - 220px); }
+  .contenedor h1 { font-size: 1.3rem; padding: .6rem .9rem; border-radius: 12px; }
+  .contenedor h1 .accent { min-width: 100px; height: 44px; padding: 0 12px; }
+}
+
+/* animaciones ligeras */
+@keyframes headerEntrance {
+  0% { transform: translateY(-20px) scale(.98); opacity: 0; filter: blur(6px); }
+  60% { transform: translateY(6px) scale(1.02); opacity: 1; filter: blur(0); }
+  100% { transform: translateY(0px) scale(1); opacity: 1; }
+}
+@keyframes embedRise {
+  0% { transform: translateY(28px); opacity: 0; filter: blur(6px); }
+  100% { transform: translateY(0); opacity: 1; filter: blur(0); }
+}
+@keyframes accentFloat {
+  0%   { transform: translateY(0)      rotate(-0.2deg); }
+  50%  { transform: translateY(-6px)  rotate(0.6deg);  }
+  100% { transform: translateY(0)      rotate(-0.2deg); }
+}
+
+/* fin del archivo */
+
+/* --- OVERRIDE: quitar el cuadro rosa (accent) y ajustar layout --- */
+.contenedor h1 .accent {
+  display: none !important;
+}
+
+.contenedor h1 {
+  justify-content: flex-start !important;
+}
+
+/* Si prefieres eliminar el markup en lugar de ocultarlo, puedo
+   eliminar el <span class="accent"> desde `cv.html`. */
