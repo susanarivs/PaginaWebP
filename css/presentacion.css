@@ -85,40 +85,74 @@
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
-    gap: 10px;
+    gap: 16px;
     animation: fadeInUp 1s ease-out 0.9s both;
 }
 
+/* envoltorio del icono: caja cuadrada para tamaño consistente */
 .presentacion__icons a {
     position: relative;
-    display: inline-block;
+    display: inline-flex;
+    width: 72px;
+    height: 72px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.02);
+    transition: transform 320ms cubic-bezier(.2,.8,.2,1), box-shadow 320ms, background 320ms;
+    will-change: transform;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.25);
 }
 
+/* imagen dentro de la caja (mismo tamaño para todos) */
 .presentacion__icons img {
-    width: 50px;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    filter: grayscale(50%);
+    width: 44px; /* tamaño uniforme */
+    height: 44px;
+    object-fit: contain;
+    display:block;
+    transition: transform 360ms cubic-bezier(.2,.8,.2,1), filter 360ms, opacity 360ms;
+    /* suavizar colores para que no desentonen con la paleta */
+    filter: grayscale(85%) brightness(0.92) contrast(0.95);
+    opacity: 0.95;
+    will-change: transform, filter, opacity;
 }
 
-.presentacion__icons a:hover img {
-    transform: scale(1.2) rotate(5deg);
-    filter: grayscale(0%) drop-shadow(0 0 10px var(--rosa-suave));
+/* Hover / focus: elevación y micro-rotación */
+.presentacion__icons a:hover,
+.presentacion__icons a:focus {
+    transform: translateY(-6px) scale(1.06);
+    background: linear-gradient(135deg, rgba(232,180,184,0.06), rgba(190,189,184,0.03));
+    box-shadow: 0 12px 30px rgba(232,180,184,0.12);
+    outline: none;
 }
 
-.presentacion__icons a::before {
-    content: '';
-    position: absolute;
-    inset: -5px;
-    background: linear-gradient(45deg, var(--rosa-suave), var(--gris-claro));
-    border-radius: 50%;
-    opacity: 0;
-    z-index: -1;
-    transition: opacity 0.3s ease;
+.presentacion__icons a:hover img,
+.presentacion__icons a:focus img {
+    transform: translateY(-3px) rotate(-4deg) scale(1.08);
+    /* recuperar color y aplicar leve brillo/tinte según paleta */
+    filter: grayscale(0%) saturate(1.05) brightness(1.06) contrast(1.03);
+    opacity: 1;
 }
 
-.presentacion__icons a:hover::before {
-    opacity: 0.3;
-    animation: pulse 1s ease-in-out infinite;
+/* Animación sutil de flotación (sinergiza con hover) */
+@keyframes iconFloat {
+    0% { transform: translateY(0); }
+    25% { transform: translateY(-4px); }
+    50% { transform: translateY(0); }
+    75% { transform: translateY(2px); }
+    100% { transform: translateY(0); }
+}
+
+.presentacion__icons a {
+        animation: iconFloat 5.5s ease-in-out infinite;
+}
+.presentacion__icons a:nth-child(1) { animation-delay: 0s; }
+.presentacion__icons a:nth-child(2) { animation-delay: 0.12s; }
+.presentacion__icons a:nth-child(3) { animation-delay: 0.24s; }
+
+/* Accesibilidad: foco visible */
+.presentacion__icons a:focus {
+    box-shadow: 0 0 0 4px rgba(232,180,184,0.12);
 }
 
 .titulo {
