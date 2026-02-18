@@ -235,3 +235,57 @@ html, body {
 
 /* Si prefieres eliminar el markup en lugar de ocultarlo, puedo
    eliminar el <span class="accent"> desde `cv.html`. */
+
+/* --- CV buttons: use site palette and accessible states --- */
+.cv-switch {
+  display: inline-flex;
+  gap: 0.6rem;
+  margin-top: 0.6rem;
+  align-items: center;
+}
+
+.cv-btn {
+  appearance: none;
+  -webkit-appearance: none;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));
+  color: var(--beige);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+
+.cv-btn:hover {
+  transform: translateY(-2px);
+}
+
+.cv-btn:focus {
+  outline: 3px solid rgba(232,180,184,0.12);
+  outline-offset: 3px;
+}
+
+.cv-btn.active {
+  background: linear-gradient(90deg, var(--rosa-suave) 0%, rgba(232,180,184,0.14) 100%);
+  color: var(--negro);
+  border-color: rgba(232,180,184,0.18);
+  box-shadow: 0 10px 30px rgba(58,30,55,0.14);
+}
+
+/* Harmonize the 'Abrir CV' button to the same palette */
+.embed-open {
+  background: linear-gradient(135deg, var(--rosa-suave), rgba(58,30,55,0.9));
+  color: var(--negro);
+  border: 1px solid rgba(0,0,0,0.08);
+  padding: 8px 14px;
+  border-radius: 12px;
+  font-weight: 700;
+  box-shadow: 0 12px 30px rgba(58,30,55,0.18);
+}
+
+.embed-open:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(58,30,55,0.2);
+}
