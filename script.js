@@ -97,3 +97,46 @@ botonEnviarMensaje.addEventListener('click', function(event) {
         inputMensaje.value="";
     }
 });
+
+/* inicializa carrusel de Impacto y Comunidad */
+function initImpactoCarousel() {
+    const carousel = document.querySelector('.impacto__carousel');
+    const btnPrev = document.querySelector('.impacto__nav.prev');
+    const btnNext = document.querySelector('.impacto__nav.next');
+    if (!carousel) return;
+
+    const updateButtons = () => {
+        // small tolerance for float rounding
+        const maxScroll = carousel.scrollWidth - carousel.clientWidth - 2;
+        btnPrev && (btnPrev.disabled = carousel.scrollLeft <= 2);
+        btnNext && (btnNext.disabled = carousel.scrollLeft >= maxScroll);
+    };
+
+    const scrollByCard = (dir = 1) => {
+        const card = carousel.querySelector('.impacto__card');
+        const gap = parseInt(getComputedStyle(carousel).gap || 18, 10);
+        const amount = (card ? card.clientWidth : carousel.clientWidth * 0.8) + gap;
+        carousel.scrollBy({ left: amount * dir, behavior: 'smooth' });
+    };
+
+    btnPrev && btnPrev.addEventListener('click', () => { scrollByCard(-1); });
+    btnNext && btnNext.addEventListener('click', () => { scrollByCard(1); });
+
+    // keyboard navigation (when carousel focused)
+    carousel.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') { scrollByCard(1); e.preventDefault(); }
+        if (e.key === 'ArrowLeft') { scrollByCard(-1); e.preventDefault(); }
+    });
+
+    // update buttons on scroll/resize
+    carousel.addEventListener('scroll', () => requestAnimationFrame(updateButtons));
+    window.addEventListener('resize', () => requestAnimationFrame(updateButtons));
+
+    // initial state
+    setTimeout(updateButtons, 200);
+}
+
+// init after DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    initImpactoCarousel();
+});
