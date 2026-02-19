@@ -45,6 +45,9 @@
                     <a href="#IdSkills" class="nav-link">Skills</a>
                 </li>
                 <li class="nav-item">
+                    <a href="#IdImpacto" class="nav-link">Impacto y Comunidad</a>
+                </li>
+                <li class="nav-item">
                     <a href="#IdFormacion" class="nav-link">Formación</a>
                 </li>
                 <li class="nav-item">
@@ -404,6 +407,49 @@
             
          </div>
         </div>
+        </section> <!-- fin IdProyectos -->
+        
+        <section id="IdImpacto" class="impacto" data-aos="fade-up">
+            <p class="impacto__titulo titulo2">Impacto y Comunidad</p>
+            <div class="impacto__wrap">
+                <button class="impacto__nav prev" aria-label="Anterior">‹</button>
+                <div class="impacto__carousel" tabindex="0" role="list">
+                    <article class="impacto__card" role="listitem">
+                        <img src="imagenes/jornada.png" alt="Predicción cáncer de mama" />
+                        <h4>Predicción de caída y supervivencia de cáncer de mama</h4>
+                        <p>Artículo en La Jornada sobre modelos y predicción de recaída y supervivencia.</p>
+                        <p style="margin-top:8px;">
+                            <a href="https://www.jornada.com.mx/2024/12/18/ciencias/a06n1cie?fbclid=IwZXh0bgNhZW0CMTEAAR0X0bsp2k9UnH1vyHwTubmVR8mfo4GARUr2xMmw69tw77YddAOPfGFxxD8_aem_roWcCJ0Rg8XVcZOQY9rmSA" target="_blank" rel="noopener" style="color:var(--rosa-suave); font-weight:700;">Leer artículo</a>
+                        </p>
+                    </article>
+                     <article class="impacto__card" role="listitem">
+                         <img src="imagenes/menties.png" alt="Mentoría Conectadas - Menties" />
+                         <h4>Mentoría Conectadas</h4>
+                         <p>Mentora en cursos de Python e IA para jóvenes.</p>
+                         <p style="margin-top:8px;">
+                             <a href="https://www.linkedin.com/posts/susanariveravergara_conectadas-activity-7108561716589813760-Ckyy?utm_source=share&utm_medium=member_desktop&rcm=ACoAACp9Et8BGXWLBjVcbM8QYQjUceCV1RjsxtM" target="_blank" rel="noopener" style="color:var(--rosa-suave); font-weight:700;">Ver en LinkedIn (Conectadas)</a>
+                         </p>
+                     </article>
+                     <article class="impacto__card" role="listitem">
+                         <img src="imagenes/tecno.jpeg" alt="Tecnolochicas - Constancia" />
+                         <h4>Tecnolochicas</h4>
+                         <p>Talleres prácticos y proyectos con niñas y adolescentes.</p>
+                         <p style="margin-top:8px;">
+                             <a href="https://www.linkedin.com/posts/susanariveravergara_lidereseducativos-activity-7100348298342871041-VuFo?utm_source=share&utm_medium=member_desktop&rcm=ACoAACp9Et8BGXWLBjVcbM8QYQjUceCV1RjsxtM" target="_blank" rel="noopener" style="color:var(--rosa-suave); font-weight:700;">Ver en LinkedIn (Tecnolochicas)</a>
+                         </p>
+                     </article>
+                     <article class="impacto__card" role="listitem">
+                      <img src="imagenes/RolM.jpeg" alt="IYF Role Model - RolM" />
+                         <h4>IYF - Role Model</h4>
+                         <p>Reconocimiento por trabajo en reducción de brechas de género.</p>
+                         <p style="margin-top:8px;">
+                            <a href="https://www.linkedin.com/posts/susanariveravergara_mujeresentic-transformandovidasjuntos-womenintech-activity-7333279702985359361-ig7z?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAACp9Et8BGXWLBjVcbM8QYQjUceCV1RjsxtM" target="_blank" rel="noopener" style="color:var(--rosa-suave); font-weight:700;">Ver en LinkedIn (IYF)</a>
+                        </p>
+                     </article>
+                     <!-- añade más tarjetas según necesites -->
+                </div>
+                <button class="impacto__nav next" aria-label="Siguiente">›</button>
+            </div>
         </section>
   
         
@@ -466,5 +512,107 @@ body {
 
 section {
     scroll-margin-top: 80px; /* Para que los enlaces de navegación no queden debajo del header */
+}
+
+/* Impacto y Comunidad — carrusel de tarjetas */
+:root {
+  --impacto-gap: 18px;
+}
+
+.impacto {
+  background: linear-gradient(180deg, rgba(0,0,0,0.04), rgba(0,0,0,0.06));
+  padding: 60px 16px;
+}
+
+.impacto__titulo {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.impacto__wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+}
+
+.impacto__carousel {
+  display: flex;
+  gap: var(--impacto-gap);
+  overflow-x: auto;
+  padding: 12px 6px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  width: 100%;
+  align-items: stretch;
+  background: transparent;
+}
+
+.impacto__card {
+  flex: 0 0 300px;
+  min-width: 260px;
+  scroll-snap-align: start;
+  background: rgba(245,245,220,0.03);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  border: 1px solid rgba(232,180,184,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: var(--beige);
+}
+
+.impacto__card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.impacto__card h4 {
+  margin: 0;
+  color: var(--rosa-suave);
+  font-size: 1.05rem;
+}
+
+.impacto__card p {
+  margin: 0;
+  color: var(--gris-claro);
+  font-size: 0.95rem;
+  line-height: 1.4;
+  flex: 1 1 auto;
+}
+
+/* nav botones */
+.impacto__nav {
+  background: linear-gradient(135deg, var(--rosa-suave), rgba(0,0,0,0.08));
+  border: none;
+  color: var(--negro);
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  cursor: pointer;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.18);
+}
+
+.impacto__nav:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+/* responsive */
+@media (max-width: 820px) {
+  .impacto__wrap { gap: 8px; }
+  .impacto__card { flex: 0 0 82%; min-width: 220px; }
+  .impacto__nav { display: none; } /* rely on swipe on small screens */
 }
 </style>
