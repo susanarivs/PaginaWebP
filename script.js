@@ -14,16 +14,39 @@ if (navToggle) {
     });
 
     // Cerrar menú al hacer click en un enlace
-    const navLinks = document.querySelectorAll(".nav-link");
-    navLinks.forEach(link => {
-        link.addEventListener("click", () => {
-            navMenu.classList.remove("active");
-            const bars = navToggle.querySelectorAll(".bar");
-            bars[0].style.transform = "none";
-            bars[1].style.opacity = "1";
-            bars[2].style.transform = "none";
+    // const navLinks = document.querySelectorAll(".nav-link");
+    // navLinks.forEach(link => {
+    //     link.addEventListener("click", () => {
+    //         navMenu.classList.remove("active");
+    //         const bars = navToggle.querySelectorAll(".bar");
+    //         bars[0].style.transform = "none";
+    //         bars[1].style.opacity = "1";
+    //         bars[2].style.transform = "none";
+    //     });
+    // });
+
+    // Re-bind nav links so order/markup changes are respected at runtime
+    function bindNavLinks() {
+        const navLinks = document.querySelectorAll(".nav-link");
+        navLinks.forEach(link => {
+            link.removeEventListener("click", closeNavIfOpen); // safe idempotent unbind
+            link.addEventListener("click", closeNavIfOpen);
         });
-    });
+    }
+
+    function closeNavIfOpen() {
+        navMenu.classList.remove("active");
+        const bars = navToggle.querySelectorAll(".bar");
+        bars[0].style.transform = "none";
+        bars[1].style.opacity = "1";
+        bars[2].style.transform = "none";
+    }
+
+    // bind now and also on DOM changes (in case menu is edited dynamically)
+    bindNavLinks();
+    // optional: observe for menu changes and re-bind (lightweight)
+    const observer = new MutationObserver(() => bindNavLinks());
+    observer.observe(navMenu, { childList: true, subtree: true });
 }
 
 // Validación de formulario
